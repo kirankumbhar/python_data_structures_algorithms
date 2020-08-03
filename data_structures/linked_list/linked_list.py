@@ -1,3 +1,5 @@
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -6,6 +8,16 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+    
+    def __len__(self):
+        node = self.head
+        if not node:
+            return 0
+        count = 1
+        while node.next:
+            count += 1
+            node = node.next
+        return count
     
     def create(self, numbers):
         if not numbers:
@@ -43,16 +55,28 @@ class LinkedList:
             list_chain +=  current.data + ('=>' if current.next else '')
             current = current.next
         print('Linked List: ' + list_chain)
+    
+    def get_input_for_linked_list(self):
+        """
+        Accept input from user as comma separated integers
+        return: Array of integers
+        """
+        ch = input('Enter comma separated numbers for linked list: ')
+        values = []
+        if ch:
+            values = [_.strip() for _ in ch.split(',')]
+        return values
 
 
 if __name__ == "__main__":
-    ch = input('Enter comma separated numbers for linked list: ')
-    values = []
-    if ch:
-        values = [_.strip() for _ in ch.split(',')]
     ll = LinkedList()
+    values = ll.get_input_for_linked_list()
     ll.create(values)
+    print('======= Linked List =======')
     ll.print_linked_list()
+    print('======= Length Linked List =======')
+    print(len(ll))
     ll.reverse()
+    print('======= Reversed Linked List =======')
     ll.print_linked_list()
 
