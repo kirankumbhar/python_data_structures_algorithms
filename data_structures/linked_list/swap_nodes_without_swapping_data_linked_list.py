@@ -52,7 +52,6 @@ def swap_nodes(ll, a, b):
         prev_node_b    node_b   node_a 
                     prev_node_a
         '''
-        print('here')
         temp = None
         temp = node_a.next
         node_a.next = node_b
@@ -68,7 +67,6 @@ def swap_nodes(ll, a, b):
     if nodes are not adjacent
 
     '''
-    print('not adjacent')
     if prev_node_a:
         prev_node_a.next = node_b
     else:
